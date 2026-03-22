@@ -1,0 +1,177 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  padding: 1.5rem 0;
+  transition: all 0.4s ease;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scrolled {
+  background: rgba(252, 251, 248, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 1rem 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  border-bottom: none;
+}
+
+.navContainer {
+  width: 95%;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.brandLogo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  transition: 0.4s;
+  white-space: nowrap;
+}
+
+.scrolled .brandLogo {
+  color: #3E2723;
+}
+
+.brandLogo span {
+  color: #B8860B;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.navMenu {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .navMenu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .navLinks {
+    font-weight: 500;
+    color: #fff;
+    position: relative;
+    font-size: 0.95rem;
+    transition: 0.4s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  .scrolled .navLinks {
+    color: #2C2522;
+  }
+  
+  .navLinks::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #B8860B;
+    transition: width 0.3s ease;
+  }
+  
+  .navLinks:hover::after,
+  .activeLink::after {
+    width: 100%;
+  }
+  
+  .navCta {
+    background: #fff;
+    color: #3E2723 !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 4px;
+  }
+  
+  .scrolled .navCta {
+    background: #3E2723;
+    color: #fff !important;
+  }
+  
+  .navCta::after {
+    display: none;
+  }
+}
+
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.desktopThemeBtn {
+  display: none;
+}
+
+.mobileThemeBtn {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .menuToggle {
+    display: none;
+  }
+  .desktopThemeBtn {
+    display: flex;
+    align-items: center;
+  }
+  .mobileThemeBtn {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 75px;
+  left: -100%;
+  width: 100%;
+  height: calc(100vh - 75px);
+  background: rgba(252, 251, 248, 0.98);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+}
+
+.mobileMenu.active {
+  left: 0;
+}
+
+.mobileMenu a {
+  display: block;
+  padding: 1.2rem;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  color: #3E2723;
+  font-weight: 500;
+  text-align: center;
+}
+
+.activeMobile {
+  color: var(--accent) !important;
+  font-weight: 700 !important;
+}
+
+.mobileCta {
+  margin-top: 1.5rem;
+  background: #3E2723 !important;
+  color: #fff !important;
+  border-radius: 5px;
+  padding: 1rem !important;
+}

@@ -1,0 +1,43 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+}
+
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text-muted);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transition: opacity 0.3s;
+}
+
+/* Hide default cursor to complete the illusion */
+body {
+  cursor: none;
+}
+
+a, button, input, textarea {
+  cursor: none; /* Let the custom cursor handle visual feedback */
+}
+
+@media (max-width: 1024px) {
+  .custom-cursor, .cursor-follower {
+    display: none;
+  }
+  body, a, button, input, textarea {
+    cursor: auto;
+  }
+}

@@ -1,0 +1,63 @@
+.parallaxSection {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.parallaxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(62, 39, 35, 0.95), rgba(43, 27, 23, 0.98));
+  z-index: 0;
+}
+
+.materialsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 800px;
+  margin: 3.5rem auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.materialItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: rgba(255,255,255,0.03);
+  padding: 1.8rem;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--accent);
+  backdrop-filter: blur(5px);
+  transition: var(--transition);
+  cursor: default;
+  text-align: left;
+}
+
+.materialItem:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(10px);
+}
+
+.materialItem h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.materialItem p {
+  color: #ccc;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.matIcon {
+  font-size: 2.5rem;
+  color: var(--accent-light);
+  opacity: 0.9;
+  flex-shrink: 0;
+  margin-top: 5px;
+}

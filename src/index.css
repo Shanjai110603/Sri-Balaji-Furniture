@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* Custom Properties */
+:root {
+  --primary: #3E2723;
+  --primary-light: #5D4037;
+  --accent: #B8860B;
+  --accent-light: #d4af37;
+  --bg-main: #FAFAFA;
+  --bg-light: #F3EFE9;
+  --text-main: #2C2522;
+  --text-muted: #6B625F;
+  --light: #ffffff;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
+  --shadow-sm: 0 4px 12px rgba(62, 39, 35, 0.05);
+  --shadow-md: 0 10px 30px rgba(62, 39, 35, 0.08);
+  --shadow-lg: 0 15px 40px rgba(62, 39, 35, 0.12);
+}
+
+[data-theme='dark'] {
+  --primary: #E6E2DE;
+  --primary-light: #FAFAFA;
+  --accent: #d4af37;
+  --accent-light: #B8860B;
+  --bg-main: #141110;
+  --bg-light: #1F1917;
+  --text-main: #FAFAFA;
+  --text-muted: #A8A29E;
+  --light: #231C1A;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Lenis Recommended CSS for Smooth Scrolling */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Base Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: auto; /* Handled by Lenis */ }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 600; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.15; margin-bottom: 1.2rem; }
+h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 0.5rem; }
+h3 { font-size: 1.5rem; margin-bottom: 0.8rem; }
+p { margin-bottom: 1.2rem; color: var(--text-muted); }
+
+/* Global Utilities */
+.section { padding: 6rem 1rem; position: relative; overflow: hidden; }
+.container { max-width: 1240px; margin: 0 auto; padding: 0 1rem; position: relative; }
+.text-center { text-align: center; }
+.bg-light { background-color: var(--bg-light); }
+.bg-dark { background-color: var(--primary); color: var(--bg-main); }
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark p { color: var(--bg-main); text-shadow: none; }
+.gold-text { color: var(--accent-light); }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.w-100 { width: 100%; }
+
+.subtitle { display: inline-block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 1rem; font-weight: 700; }
+.separator { width: 60px; height: 3px; background: var(--accent); margin: 1rem 0 2rem 0; border-radius: 2px; }
+.separator-left { width: 60px; height: 3px; background: var(--accent); margin: 1rem 0 2rem 0; border-radius: 2px; }
+
+/* Buttons & Links */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 2rem; font-weight: 600; font-size: 0.95rem;
+  border-radius: 5px; transition: var(--transition); cursor: pointer; border: 2px solid transparent; letter-spacing: 0.5px;
+}
+.btn-primary { background: var(--primary); color: var(--light); box-shadow: 0 6px 15px rgba(62, 39, 35, 0.15); }
+.btn-primary:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(62, 39, 35, 0.25); }
+.btn-outline { border-color: var(--light); color: var(--light); }
+.btn-outline:hover { background: var(--light); color: var(--primary); transform: translateY(-3px); }
+
+/* GSAP Preparations */
+.visibility-hidden { visibility: hidden; }

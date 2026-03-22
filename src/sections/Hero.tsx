@@ -1,0 +1,79 @@
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ArrowRight } from '@phosphor-icons/react';
+import styles from './Hero.module.css';
+import Magnetic from '../components/Magnetic';
+import { useLang } from '../context/LanguageContext';
+
+
+
+const Hero: React.FC = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
+
+  useGSAP(() => {
+    // Parallax
+    gsap.to(bgRef.current, {
+      yPercent: 40,
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Content animation
+    const tl = gsap.timeline();
+    tl.from('.hero-elem', {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out',
+      delay: 0.2
+    });
+  }, { scope: heroRef });
+
+  return (
+    <section ref={heroRef} className={styles.hero} id="home">
+      <div className={styles.heroBgWrapper}>
+        <div 
+          ref={bgRef} 
+          className={styles.heroBg} 
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=2000')` }}
+        />
+        <div className={styles.overlay}></div>
+      </div>
+
+      <div ref={contentRef} className={styles.heroContent}>
+        <span className={`${styles.subtitle} hero-elem`}>{t('hero.subtitle')}</span>
+        <h1 className="hero-elem">{t('hero.h1').split('\n').map((line, i) => <React.Fragment key={i}>{line}{i === 0 && <br />}</React.Fragment>)}</h1>
+        <p className="hero-elem">{t('hero.desc')}</p>
+        
+        <div className={`${styles.heroBtns} hero-elem`}>
+          <Magnetic>
+            <a href="#products" className="btn btn-primary" style={{ display: 'inline-flex' }}>
+              {t('hero.explore')} <ArrowRight className={styles.icon} weight="bold" />
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href="#contact" className="btn btn-outline" style={{ display: 'inline-flex' }}>{t('hero.consult')}</a>
+          </Magnetic>
+        </div>
+      </div>
+      
+      {/* Scroll Indicator */}
+      <div className={styles.scrollIndicator}>
+        <div className={styles.mouse}></div>
+        <p>Scroll</p>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

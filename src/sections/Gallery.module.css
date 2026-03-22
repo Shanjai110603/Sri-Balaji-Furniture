@@ -1,0 +1,33 @@
+.galleryWrapper {
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.gallerySwiper {
+  padding-bottom: 3rem !important;
+}
+
+.galleryItem {
+  height: 350px;
+  cursor: crosshair;
+  background: #E0D8D0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+.galleryItem:hover {
+  box-shadow: 0 10px 30px rgba(184, 134, 11, 0.2);
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.galleryItem:hover img {
+  transform: scale(1.05);
+}
