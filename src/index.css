@@ -2,15 +2,15 @@
 
 /* Custom Properties */
 :root {
-  --primary: #3E2723;
-  --primary-light: #5D4037;
-  --accent: #B8860B;
-  --accent-light: #d4af37;
-  --bg-main: #FAFAFA;
-  --bg-light: #F3EFE9;
-  --text-main: #2C2522;
-  --text-muted: #6B625F;
-  --light: #ffffff;
+  --primary: #3E2923; /* Deep teak */
+  --primary-light: #5C4033; /* Soft brown */
+  --accent: #C5A059; /* Subtle Premium Gold */
+  --accent-light: #DFB86C;
+  --bg-main: #FCFBF8; /* Warm cream */
+  --bg-light: #F6F3ED; /* Soft beige */
+  --text-main: #2C211E;
+  --text-muted: #6B5E59;
+  --light: #FFFFFF;
   --radius: 12px;
   --radius-sm: 8px;
   --transition: cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
@@ -20,15 +20,15 @@
 }
 
 [data-theme='dark'] {
-  --primary: #E6E2DE;
-  --primary-light: #FAFAFA;
-  --accent: #d4af37;
-  --accent-light: #B8860B;
-  --bg-main: #141110;
-  --bg-light: #1F1917;
-  --text-main: #FAFAFA;
-  --text-muted: #A8A29E;
-  --light: #231C1A;
+  --primary: #F0EDE6;
+  --primary-light: #FFFFFF;
+  --accent: #DFB86C; /* Gold remains visible */
+  --accent-light: #C5A059;
+  --bg-main: #1D1815; /* Deep ebony wood */
+  --bg-light: #28211E; /* Rich dark brown */
+  --text-main: #F4F1EC;
+  --text-muted: #A39B97;
+  --light: #28211E;
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.6);

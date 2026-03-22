@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRight, Storefront, WhatsappLogo } from '@phosphor-icons/react';
 import styles from './Hero.module.css';
+import { Link } from 'react-router-dom';
 import Magnetic from '../components/Magnetic';
 import { useLang } from '../context/LanguageContext';
 
@@ -45,7 +46,7 @@ const Hero: React.FC = () => {
         <div 
           ref={bgRef} 
           className={styles.heroBg} 
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=2000')` }}
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=2000')` }}
         />
         <div className={styles.overlay}></div>
       </div>
@@ -55,14 +56,21 @@ const Hero: React.FC = () => {
         <h1 className="hero-elem">{t('hero.h1').split('\n').map((line, i) => <React.Fragment key={i}>{line}{i === 0 && <br />}</React.Fragment>)}</h1>
         <p className="hero-elem">{t('hero.desc')}</p>
         
-        <div className={`${styles.heroBtns} hero-elem`}>
+        <div className={`${styles.heroBtns} hero-elem`} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <Magnetic>
             <a href="#products" className="btn btn-primary" style={{ display: 'inline-flex' }}>
               {t('hero.explore')} <ArrowRight className={styles.icon} weight="bold" />
             </a>
           </Magnetic>
           <Magnetic>
-            <a href="#contact" className="btn btn-outline" style={{ display: 'inline-flex' }}>{t('hero.consult')}</a>
+            <Link to="/store" className="btn btn-outline" style={{ display: 'inline-flex' }}>
+              {t('hero.visit')} <Storefront className={styles.icon} weight="bold" />
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <a href="https://wa.me/919791983075" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ display: 'inline-flex', borderColor: '#25D366', color: '#25D366' }}>
+              {t('hero.whatsapp')} <WhatsappLogo className={styles.icon} weight="fill" />
+            </a>
           </Magnetic>
         </div>
       </div>

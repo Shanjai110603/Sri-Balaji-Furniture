@@ -6,12 +6,13 @@ import Materials from '../sections/Materials';
 import WhyChooseUs from '../sections/WhyChooseUs';
 import Gallery from '../sections/Gallery';
 import Reviews from '../sections/Reviews';
+import ShowroomStore from '../sections/ShowroomStore';
 import Locations from '../sections/Locations';
 import OrderForm from '../sections/OrderForm';
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Sri Balaji Wood Works | Premium Custom Furniture";
+    document.title = "Sri Balaji Wood Works | Custom & Teak Furniture Shop in Udumalpet";
   }, []);
 
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <OrderForm />
       <Gallery />
       <Reviews />
+      <ShowroomStore />
       <Locations />
     </main>
   );

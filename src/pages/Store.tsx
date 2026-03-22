@@ -14,7 +14,7 @@ const storeProducts = [
 
 export default function Store() {
   useEffect(() => {
-    document.title = "Online Store | Sri Balaji Wood Works";
+    document.title = "Wooden Furniture Near Me | Store - Sri Balaji Wood Works Udumalpet";
     window.scrollTo(0, 0);
   }, []);
 

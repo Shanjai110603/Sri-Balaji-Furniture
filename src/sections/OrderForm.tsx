@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { PaperPlaneRight } from '@phosphor-icons/react';
+import { PaperPlaneRight, Phone } from '@phosphor-icons/react';
 import styles from './OrderForm.module.css';
 import { useLang } from '../context/LanguageContext';
 
@@ -79,10 +79,13 @@ const OrderForm: React.FC = () => {
               value={formData.requirement} onChange={e => setFormData({...formData, requirement: e.target.value})}></textarea>
           </div>
           
-          <div className="text-center mt-2">
+          <div className="text-center mt-2" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button type="submit" className="btn btn-primary btn-hover-effect">
               {t('form.submit')} <PaperPlaneRight weight="fill" style={{marginLeft: '8px'}} />
             </button>
+            <a href="tel:+919791983075" className="btn btn-outline dark-outline-btn">
+              {t('form.call')} <Phone weight="fill" style={{marginLeft: '8px'}} />
+            </a>
           </div>
         </form>
       </div>

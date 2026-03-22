@@ -4,7 +4,6 @@ import { ThemeProvider } from './context/ThemeContext.tsx';
 import { LanguageProvider } from './context/LanguageContext';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { WhatsappLogo } from '@phosphor-icons/react';
 
 gsap.registerPlugin(ScrollTrigger);
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -12,6 +11,7 @@ import Navbar from './components/Navbar';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import Footer from './sections/Footer';
+import StickyWhatsApp from './components/StickyWhatsApp';
 
 // Performance Optimization: Lazy Load Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -66,13 +66,7 @@ function App() {
           </Routes>
         </Suspense>
         <Footer />
-        <a href="https://wa.me/919791983075?text=Hi!%20I'm%20interested%20in%20custom%20furniture." className="floating-wa" target="_blank" rel="noopener noreferrer" style={{
-          position: 'fixed', bottom: 30, right: 30, background: '#25D366', color: 'white', width: 65, height: 65, borderRadius: '50%',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 20px rgba(37, 211, 102, 0.4)', zIndex: 9999,
-          fontSize: '2.5rem'
-        }}>
-          <WhatsappLogo weight="fill" />
-        </a>
+        <StickyWhatsApp />
       </BrowserRouter>
       </LanguageProvider>
     </ThemeProvider>

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import { PenNib, Tag, Truck, ShieldStar } from '@phosphor-icons/react';
+import { Medal, Users, Star, Sliders, Tag, Truck } from '@phosphor-icons/react';
 import styles from './WhyChooseUs.module.css';
 import { useLang } from '../context/LanguageContext';
 
@@ -15,10 +15,12 @@ const WhyChooseUs: React.FC = () => {
   const { t } = useLang();
 
   const features = [
-    { icon: PenNib, title: t('why.f1.title'), text: t('why.f1.text') },
-    { icon: Tag, title: t('why.f2.title'), text: t('why.f2.text') },
-    { icon: Truck, title: t('why.f3.title'), text: t('why.f3.text') },
-    { icon: ShieldStar, title: t('why.f4.title'), text: t('why.f4.text') },
+    { icon: Medal, title: t('why.f1.title'), text: t('why.f1.text') },
+    { icon: Users, title: t('why.f2.title'), text: t('why.f2.text') },
+    { icon: Star, title: t('why.f3.title'), text: t('why.f3.text') },
+    { icon: Sliders, title: t('why.f4.title'), text: t('why.f4.text') },
+    { icon: Tag, title: t('why.f5.title'), text: t('why.f5.text') },
+    { icon: Truck, title: t('why.f6.title'), text: t('why.f6.text') },
   ];
 
   useGSAP(() => {

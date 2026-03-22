@@ -22,6 +22,7 @@ const Reviews: React.FC = () => {
     { name: "Karthik P.", text: t('reviews.r2') },
     { name: "Lakshmi S.", text: t('reviews.r3') },
     { name: "Vishnu V.", text: t('reviews.r4') },
+    { name: "Meena K.", text: t('reviews.r5') },
   ];
 
   useGSAP(() => {
@@ -38,6 +39,13 @@ const Reviews: React.FC = () => {
         <span className="subtitle">{t('reviews.subtitle')}</span>
         <h2>{t('reviews.h2')}</h2>
         <div className="separator mx-auto"></div>
+        
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '1.5rem' }}>
+          <div style={{ background: 'var(--accent)', color: 'var(--light)', padding: '4px 12px', borderRadius: '20px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <Star weight="fill" /> 4.6/5
+          </div>
+          <span style={{ color: 'var(--text-muted)', fontWeight: '500' }}>{t('reviews.ratingText').split('4.6/5')[0]} <span style={{color: 'var(--primary)', fontWeight: 'bold'}}>100+</span></span>
+        </div>
         
         <div className={styles.reviewsWrapper}>
           <Swiper
