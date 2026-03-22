@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 
 import { ArrowRight, X } from '@phosphor-icons/react';
 import styles from './Products.module.css';
+import { useLang } from '../context/LanguageContext';
 
 
 
@@ -18,6 +19,7 @@ const products = [
 const Products: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [selectedProduct, setSelectedProduct] = useState<{id: number, name: string, img: string} | null>(null);
+  const { t } = useLang();
 
   useGSAP(() => {
     if(!sectionRef.current) return;
@@ -37,12 +39,10 @@ const Products: React.FC = () => {
     <section id="products" className="section" ref={sectionRef}>
       <div className="container">
         <div className="text-center gsap-title">
-          <span className="subtitle">Masterpieces</span>
-          <h2>Bespoke Furniture Collections</h2>
+          <span className="subtitle">{t('products.subtitle')}</span>
+          <h2>{t('products.h2')}</h2>
           <div className="separator mx-auto"></div>
-          <p className="mx-auto" style={{ maxWidth: '600px' }}>
-            Explore our diverse range of custom-built furniture, designed to suit your unique taste and spatial requirements.
-          </p>
+          <p className="mx-auto" style={{ maxWidth: '600px' }}>{t('products.desc')}</p>
         </div>
 
         <div className={styles.productsGrid}>
@@ -54,7 +54,7 @@ const Products: React.FC = () => {
               <div className={styles.productInfo}>
                 <h3>{product.name}</h3>
                 <button onClick={() => setSelectedProduct(product)} className={styles.productLink} style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                  Request Design <ArrowRight className={styles.arrow} />
+                  {t('products.request')} <ArrowRight className={styles.arrow} />
                 </button>
               </div>
             </div>
@@ -73,7 +73,7 @@ const Products: React.FC = () => {
               <h3>{selectedProduct.name}</h3>
               <p>Premium handcrafted {selectedProduct.name.toLowerCase()} tailored precisely to your exact spatial requirements and aesthetic preferences.</p>
               <a href="#contact" className="btn btn-primary" onClick={() => setSelectedProduct(null)}>
-                Quote This Design
+                {t('products.quote')}
               </a>
             </div>
           </div>

@@ -4,18 +4,22 @@ import { useGSAP } from '@gsap/react';
 
 import { PenNib, Tag, Truck, ShieldStar } from '@phosphor-icons/react';
 import styles from './WhyChooseUs.module.css';
+import { useLang } from '../context/LanguageContext';
 
 
 
-const features = [
-  { icon: PenNib, title: "Custom Design Support", text: "Work directly with our artisans to bring your exact vision to life." },
-  { icon: Tag, title: "Affordable Pricing", text: "Premium quality without the middleman markup. Direct from our workshop." },
-  { icon: Truck, title: "Fast Delivery", text: "Efficient production timelines ensuring you get your furniture on schedule." },
-  { icon: ShieldStar, title: "Strong & Durable", text: "Built with structural integrity guaranteeing decades of reliable use." },
-];
+
 
 const WhyChooseUs: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
+
+  const features = [
+    { icon: PenNib, title: t('why.f1.title'), text: t('why.f1.text') },
+    { icon: Tag, title: t('why.f2.title'), text: t('why.f2.text') },
+    { icon: Truck, title: t('why.f3.title'), text: t('why.f3.text') },
+    { icon: ShieldStar, title: t('why.f4.title'), text: t('why.f4.text') },
+  ];
 
   useGSAP(() => {
     if(!sectionRef.current) return;
@@ -35,8 +39,8 @@ const WhyChooseUs: React.FC = () => {
     <section id="why-us" className="section bg-light" ref={sectionRef}>
       <div className="container text-center">
         <div className="gsap-title">
-          <span className="subtitle">The Balaji Difference</span>
-          <h2>Why Choose Us</h2>
+          <span className="subtitle">{t('why.subtitle')}</span>
+          <h2>{t('why.h2')}</h2>
           <div className="separator mx-auto"></div>
         </div>
 
@@ -53,7 +57,7 @@ const WhyChooseUs: React.FC = () => {
         </div>
 
         <div className="gsap-title mt-2" style={{ marginTop: '3rem' }}>
-          <a href="#contact" className="btn btn-primary btn-hover-effect">Call Now for Free Consultation</a>
+          <a href="#contact" className="btn btn-primary btn-hover-effect">{t('why.cta')}</a>
         </div>
       </div>
     </section>

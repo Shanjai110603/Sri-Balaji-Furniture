@@ -13,6 +13,8 @@ const Navbar: React.FC = () => {
   const { lang, toggleLang, t } = useLang();
   const location = useLocation();
   const isStore = location.pathname === '/store';
+  // On the Store page (light background), always behave as if we've scrolled
+  const isDark = scrolled || isStore;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,9 +39,9 @@ const Navbar: React.FC = () => {
       onClick={toggleLang}
       title="Switch Language / மொழி மாற்று"
       style={{
-        background: 'none', border: `1.5px solid ${scrolled ? '#3E2723' : 'rgba(255,255,255,0.6)'}`,
+        background: 'none', border: `1.5px solid ${isDark ? '#3E2723' : 'rgba(255,255,255,0.6)'}`,
         borderRadius: '999px', cursor: 'pointer',
-        color: scrolled ? '#3E2723' : '#ffffff',
+        color: isDark ? '#3E2723' : '#ffffff',
         fontSize: '0.75rem', fontWeight: 700,
         letterSpacing: '1px', padding: '4px 10px',
         display: 'flex', alignItems: 'center', gap: '4px',
@@ -51,7 +53,7 @@ const Navbar: React.FC = () => {
   );
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+    <nav className={`${styles.navbar} ${isDark ? styles.scrolled : ''}`}>
       <div className={styles.navContainer}>
         <a href="/#" className={styles.brandLogo}>
           Sri Balaji <span>Wood Works</span>
@@ -68,7 +70,7 @@ const Navbar: React.FC = () => {
           <li><a href="/#contact" className={`${styles.navLinks} ${styles.navCta} ${activeSection === 'contact' && !isStore ? styles.activeLink : ''}`}>{t('nav.consultation')}</a></li>
           <li><LangButton /></li>
           <li>
-            <button className={styles.desktopThemeBtn} onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', color: scrolled ? '#3E2723' : '#ffffff', marginLeft: '0.5rem' }}>
+            <button className={styles.desktopThemeBtn} onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isDark ? '#3E2723' : '#ffffff', marginLeft: '0.5rem' }}>
               {theme === 'light' ? <Moon size={24} weight="fill" /> : <Sun size={24} weight="fill" />}
             </button>
           </li>
@@ -76,12 +78,11 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <LangButton />
-          <button className={styles.mobileThemeBtn} onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', color: scrolled ? '#3E2723' : '#ffffff' }}>
+          <button className={styles.mobileThemeBtn} onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isDark ? '#3E2723' : '#ffffff' }}>
             {theme === 'light' ? <Moon size={24} weight="fill" /> : <Sun size={24} weight="fill" />}
           </button>
           <div className={styles.menuToggle} onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X size={28} color={scrolled ? 'var(--primary)' : '#ffffff'} /> : <List size={28} color={scrolled ? 'var(--primary)' : '#ffffff'} />}
+            {menuOpen ? <X size={28} color={isDark ? 'var(--primary)' : '#ffffff'} /> : <List size={28} color={isDark ? 'var(--primary)' : '#ffffff'} />}
           </div>
         </div>
       </div>
@@ -95,6 +96,7 @@ const Navbar: React.FC = () => {
         <Link to="/store" className={isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.shop')}</Link>
         <a href="/#locations" className={activeSection === 'locations' && !isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.visit')}</a>
         <a href="/#contact" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>{t('nav.consultation')}</a>
+        <div style={{ margin: '1rem auto 0', display: 'flex', justifyContent: 'center' }}><LangButton /></div>
       </div>
     </nav>
   );

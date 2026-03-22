@@ -4,11 +4,13 @@ import { useGSAP } from '@gsap/react';
 
 import { Tree, ShieldCheck, Diamond } from '@phosphor-icons/react';
 import styles from './Materials.module.css';
+import { useLang } from '../context/LanguageContext';
 
 
 
 const Materials: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
 
   useGSAP(() => {
     if(!sectionRef.current) return;
@@ -30,12 +32,10 @@ const Materials: React.FC = () => {
       <div className="container z-1 pos-rel">
         
         <div className="text-center gsap-title">
-          <span className="subtitle gold-text">Superior Quality</span>
-          <h2>The Soul of Our Furniture</h2>
+          <span className="subtitle gold-text">{t('mat.subtitle')}</span>
+          <h2>{t('mat.h2')}</h2>
           <div className="separator mx-auto gold-bg"></div>
-          <p className="mx-auto" style={{ maxWidth: '700px', color: '#ccc' }}>
-            We source only the finest, matured timber to ensure your furniture looks magnificent and lasts for generations.
-          </p>
+          <p className="mx-auto" style={{ maxWidth: '700px', color: '#ccc' }}>{t('mat.desc')}</p>
         </div>
 
         <div className={styles.materialsList}>
@@ -43,24 +43,24 @@ const Materials: React.FC = () => {
           <div className={`${styles.materialItem} gsap-material`}>
             <Tree className={styles.matIcon} />
             <div className="text-left">
-              <h3>First Grade Teak Wood</h3>
-              <p>Known for its incredible durability and natural weather resistance, teak is the gold standard for enduring furniture.</p>
+              <h3>{t('mat.m1.title')}</h3>
+              <p>{t('mat.m1.desc')}</p>
             </div>
           </div>
 
           <div className={`${styles.materialItem} gsap-material`}>
             <ShieldCheck className={styles.matIcon} />
             <div className="text-left">
-              <h3>Authentic Rosewood</h3>
-              <p>Famous for its deep, rich hues and distinct grain patterns, perfect for creating exquisite, statement pieces.</p>
+              <h3>{t('mat.m2.title')}</h3>
+              <p>{t('mat.m2.desc')}</p>
             </div>
           </div>
 
           <div className={`${styles.materialItem} gsap-material`}>
             <Diamond className={styles.matIcon} />
             <div className="text-left">
-              <h3>Premium BTC Wood</h3>
-              <p>Burma Teak Wood offers unmatched stability, minimal shrinkage, and a gorgeous finish that appreciates over time.</p>
+              <h3>{t('mat.m3.title')}</h3>
+              <p>{t('mat.m3.desc')}</p>
             </div>
           </div>
 

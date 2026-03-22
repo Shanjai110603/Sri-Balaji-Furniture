@@ -6,18 +6,23 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Quotes, Star } from '@phosphor-icons/react';
 import styles from './Reviews.module.css';
+import { useLang } from '../context/LanguageContext';
 
 
 
-const reviews = [
-  { name: "Anand R.", text: "The custom teak wood wardrobe they built for my master bedroom is simply stunning. The craftsmanship is evident in every joint." },
-  { name: "Karthik P.", text: "We ordered complete office furniture. Not only was the delivery fast, but the premium feel of the wood transformed our workspace." },
-  { name: "Lakshmi S.", text: "Sri Balaji Wood Works designed a beautiful rosewood dining table for us. It's the centerpiece of our home now!" },
-  { name: "Vishnu V.", text: "Exceptional quality and genuine materials. The detailing on the sofa set matches exactly what was shown in the catalog." }
-];
+
+
 
 const Reviews: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
+
+  const reviews = [
+    { name: "Anand R.", text: t('reviews.r1') },
+    { name: "Karthik P.", text: t('reviews.r2') },
+    { name: "Lakshmi S.", text: t('reviews.r3') },
+    { name: "Vishnu V.", text: t('reviews.r4') },
+  ];
 
   useGSAP(() => {
     if(!sectionRef.current) return;
@@ -30,8 +35,8 @@ const Reviews: React.FC = () => {
   return (
     <section className="section bg-light" ref={sectionRef}>
       <div className="container text-center gsap-title">
-        <span className="subtitle">Testimonials</span>
-        <h2>Client Experiences</h2>
+        <span className="subtitle">{t('reviews.subtitle')}</span>
+        <h2>{t('reviews.h2')}</h2>
         <div className="separator mx-auto"></div>
         
         <div className={styles.reviewsWrapper}>

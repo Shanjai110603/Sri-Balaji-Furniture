@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 
 import { MapPin } from '@phosphor-icons/react';
 import styles from './Locations.module.css';
+import { useLang } from '../context/LanguageContext';
 
 
 
@@ -24,6 +25,7 @@ const locationsData = [
 
 const Locations: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
 
   useGSAP(() => {
     if(!sectionRef.current) return;
@@ -43,8 +45,8 @@ const Locations: React.FC = () => {
     <section id="locations" className="section" ref={sectionRef}>
       <div className="container text-center">
         <div className="gsap-title">
-          <span className="subtitle">Find Us</span>
-          <h2>Our Branches</h2>
+          <span className="subtitle">{t('loc.subtitle')}</span>
+          <h2>{t('loc.h2')}</h2>
           <div className="separator mx-auto"></div>
         </div>
 
@@ -59,7 +61,7 @@ const Locations: React.FC = () => {
               </div>
               
               <a href={loc.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline dark-outline-btn w-100">
-                Get Directions
+                {t('loc.directions')}
               </a>
             </div>
           ))}

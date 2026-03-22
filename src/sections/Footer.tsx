@@ -4,11 +4,13 @@ import { useGSAP } from '@gsap/react';
 
 import { FacebookLogo, InstagramLogo, TwitterLogo, WhatsappLogo, Circle } from '@phosphor-icons/react';
 import styles from './Footer.module.css';
+import { useLang } from '../context/LanguageContext';
 
 
 
 const Footer: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
 
   useGSAP(() => {
     if(!sectionRef.current) return;
@@ -25,9 +27,7 @@ const Footer: React.FC = () => {
         <div className={styles.gridFooter}>
           <div className={`${styles.footerCol} gsap-footer`}>
             <a href="#" className={styles.footerLogo}>Sri Balaji <span>Wood Works</span></a>
-            <p style={{ color: '#a0a0a0', marginBottom: '1.5rem', maxWidth: '300px' }}>
-              Crafting premium custom furniture in Udumalaipettai for over 30 years. Quality that speaks for itself.
-            </p>
+            <p style={{ color: '#a0a0a0', marginBottom: '1.5rem', maxWidth: '300px' }}>{t('footer.tagline')}</p>
             <div className={styles.socials}>
               <a href="#" className={styles.socialIcon}><FacebookLogo weight="fill" /></a>
               <a href="#" className={styles.socialIcon}><InstagramLogo weight="fill" /></a>
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className={`${styles.footerCol} gsap-footer`}>
-            <h3>Quick Links</h3>
+            <h3>{t('footer.links')}</h3>
             <ul>
               <li><Circle weight="fill" size={8} style={{marginRight: '8px', color: 'var(--accent)'}} /> <a href="#home">Home</a></li>
               <li><Circle weight="fill" size={8} style={{marginRight: '8px', color: 'var(--accent)'}} /> <a href="#about">Our Story</a></li>
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className={`${styles.footerCol} gsap-footer`}>
-            <h3>Contact Us</h3>
+            <h3>{t('footer.contact')}</h3>
             <ul style={{ color: '#a0a0a0' }}>
               <li style={{ marginBottom: '1rem' }}>
                 <strong>Unit 2:</strong> Palani Rd, Udumalaipettai, TN 642126
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className={`${styles.footerBottom} gsap-footer`}>
-          <p>&copy; {new Date().getFullYear()} Sri Balaji Wood Works. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t('footer.copy')}</p>
         </div>
       </div>
     </footer>
