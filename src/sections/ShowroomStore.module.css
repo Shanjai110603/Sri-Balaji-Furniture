@@ -76,4 +76,13 @@
   .contentCol {
     padding: 2rem 1.5rem;
   }
+  .actionBtns {
+    flex-direction: column;
+    width: 100%;
+  }
+  .actionBtns a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }

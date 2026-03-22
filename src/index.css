@@ -89,3 +89,14 @@ p { margin-bottom: 1.2rem; color: var(--text-muted); }
 
 /* GSAP Preparations */
 .visibility-hidden { visibility: hidden; }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .section { padding: 4rem 1.5rem; }
+  h1 { font-size: clamp(2rem, 8vw, 2.8rem); margin-bottom: 1rem; }
+  h2 { font-size: clamp(1.8rem, 6vw, 2.2rem); }
+  h3 { font-size: 1.3rem; }
+  p { font-size: 0.95rem; }
+  .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+  .separator, .separator-left { margin: 1rem auto 1.5rem; }
+}
