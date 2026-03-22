@@ -16,6 +16,20 @@ const Navbar: React.FC = () => {
   // On the Store page (light background), always behave as if we've scrolled
   const isDark = scrolled || isStore;
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (isStore) return; // Allow default navigation to home page with hash
+    
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+    setMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -61,13 +75,13 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Menu */}
         <ul className={styles.navMenu}>
-          <li><a href="/#about" className={`${styles.navLinks} ${activeSection === 'about' && !isStore ? styles.activeLink : ''}`}>{t('nav.story')}</a></li>
-          <li><a href="/#products" className={`${styles.navLinks} ${activeSection === 'products' && !isStore ? styles.activeLink : ''}`}>{t('nav.bespoke')}</a></li>
-          <li><a href="/#materials" className={`${styles.navLinks} ${activeSection === 'materials' && !isStore ? styles.activeLink : ''}`}>{t('nav.materials')}</a></li>
-          <li><a href="/#gallery" className={`${styles.navLinks} ${activeSection === 'gallery' && !isStore ? styles.activeLink : ''}`}>{t('nav.gallery')}</a></li>
+          <li><a href="/#about" onClick={(e) => handleScrollTo(e, 'about')} className={`${styles.navLinks} ${activeSection === 'about' && !isStore ? styles.activeLink : ''}`}>{t('nav.story')}</a></li>
+          <li><a href="/#products" onClick={(e) => handleScrollTo(e, 'products')} className={`${styles.navLinks} ${activeSection === 'products' && !isStore ? styles.activeLink : ''}`}>{t('nav.bespoke')}</a></li>
+          <li><a href="/#materials" onClick={(e) => handleScrollTo(e, 'materials')} className={`${styles.navLinks} ${activeSection === 'materials' && !isStore ? styles.activeLink : ''}`}>{t('nav.materials')}</a></li>
+          <li><a href="/#gallery" onClick={(e) => handleScrollTo(e, 'gallery')} className={`${styles.navLinks} ${activeSection === 'gallery' && !isStore ? styles.activeLink : ''}`}>{t('nav.gallery')}</a></li>
           <li><Link to="/store" className={`${styles.navLinks} ${isStore ? styles.activeLink : ''}`}>{t('nav.shop')}</Link></li>
-          <li><a href="/#locations" className={`${styles.navLinks} ${activeSection === 'locations' && !isStore ? styles.activeLink : ''}`}>{t('nav.visit')}</a></li>
-          <li><a href="/#contact" className={`${styles.navLinks} ${styles.navCta} ${activeSection === 'contact' && !isStore ? styles.activeLink : ''}`}>{t('nav.consultation')}</a></li>
+          <li><a href="/#locations" onClick={(e) => handleScrollTo(e, 'locations')} className={`${styles.navLinks} ${activeSection === 'locations' && !isStore ? styles.activeLink : ''}`}>{t('nav.visit')}</a></li>
+          <li><a href="/#contact" onClick={(e) => handleScrollTo(e, 'contact')} className={`${styles.navLinks} ${styles.navCta} ${activeSection === 'contact' && !isStore ? styles.activeLink : ''}`}>{t('nav.consultation')}</a></li>
           <li><LangButton /></li>
           <li>
             <button className={styles.desktopThemeBtn} onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', color: isDark ? '#3E2723' : '#ffffff', marginLeft: '0.5rem' }}>
@@ -89,13 +103,13 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.active : ''}`}>
-        <a href="/#about" className={activeSection === 'about' && !isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.story')}</a>
-        <a href="/#products" className={activeSection === 'products' && !isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.bespoke')}</a>
-        <a href="/#materials" className={activeSection === 'materials' && !isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.materials')}</a>
-        <a href="/#gallery" className={activeSection === 'gallery' && !isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.gallery')}</a>
+        <a href="/#about" className={activeSection === 'about' && !isStore ? styles.activeMobile : ''} onClick={(e) => handleScrollTo(e, 'about')}>{t('nav.story')}</a>
+        <a href="/#products" className={activeSection === 'products' && !isStore ? styles.activeMobile : ''} onClick={(e) => handleScrollTo(e, 'products')}>{t('nav.bespoke')}</a>
+        <a href="/#materials" className={activeSection === 'materials' && !isStore ? styles.activeMobile : ''} onClick={(e) => handleScrollTo(e, 'materials')}>{t('nav.materials')}</a>
+        <a href="/#gallery" className={activeSection === 'gallery' && !isStore ? styles.activeMobile : ''} onClick={(e) => handleScrollTo(e, 'gallery')}>{t('nav.gallery')}</a>
         <Link to="/store" className={isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.shop')}</Link>
-        <a href="/#locations" className={activeSection === 'locations' && !isStore ? styles.activeMobile : ''} onClick={() => setMenuOpen(false)}>{t('nav.visit')}</a>
-        <a href="/#contact" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>{t('nav.consultation')}</a>
+        <a href="/#locations" className={activeSection === 'locations' && !isStore ? styles.activeMobile : ''} onClick={(e) => handleScrollTo(e, 'locations')}>{t('nav.visit')}</a>
+        <a href="/#contact" className={styles.mobileCta} onClick={(e) => handleScrollTo(e, 'contact')}>{t('nav.consultation')}</a>
         <div style={{ margin: '1rem auto 0', display: 'flex', justifyContent: 'center' }}><LangButton /></div>
       </div>
     </nav>

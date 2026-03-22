@@ -13,6 +13,31 @@ import OrderForm from '../sections/OrderForm';
 export default function Home() {
   useEffect(() => {
     document.title = "Sri Balaji Wood Works | Custom & Teak Furniture Shop in Udumalpet";
+    
+    // Intercept clicks on hash links to scroll smoothly without polluting URL
+    const handleHashClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest('a');
+      if (!anchor) return;
+      
+      const href = anchor.getAttribute('href');
+      if (href && (href.startsWith('#') || href.startsWith('/#'))) {
+        const id = href.replace('/#', '').replace('#', '');
+        if (id) {
+          const element = document.getElementById(id);
+          if (element) {
+            e.preventDefault();
+            window.scrollTo({
+              top: element.offsetTop - 80, // Adjust for fixed navbar
+              behavior: 'smooth'
+            });
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', handleHashClick);
+    return () => document.removeEventListener('click', handleHashClick);
   }, []);
 
   return (
